@@ -1,5 +1,33 @@
+<div class="container mt-5">
+  <header class="mb-4">
+    <h1 class="display-4 text-center">Your Restaurant</h1>
+  </header>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title"><%= @restaurant.name %></h2>
+      <h3 class="card-subtitle mb-2 text-muted"><%= @restaurant.address %></h3>
+      <p class="card-text"><%= @restaurant.category %></p>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-start mb-4">
+    <%# <%= link_to "Add a Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary me-2" %> %>
+    <%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary" %>
+  </div>
+    
 <div class="container">
-  <div class="row"><h1><%= @restaurant.name %></h1></div>
-  <div class="row"><h2><%= @restaurant.address %></h2></div>
-  <div class="row"><p><%= @restaurant.category%></p></div>
+  <%= render "form", restaurant: @restaurant %>
+</div>
+
+
+    <h2 class="h4 mb-3">Reviews</h2>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item">
+          <strong><%= review.rating %> / 5</strong> - <%= review.content %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
